@@ -1,0 +1,163 @@
+{
+  "app": {
+    "name": "Halfway",
+    "tagline": "Meet halfway between Italy and Japan"
+  },
+  "auth": {
+    "welcomeTitle": "Welcome to Halfway",
+    "welcomeSubtitle": "Sign in or create an account to connect with your language partners.",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "signInAction": "Sign in",
+    "signUpAction": "Create account",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "switchToSignUp": "Sign up",
+    "switchToSignIn": "Sign in",
+    "signUpSuccess": "Account created! Check your inbox to confirm your email, then sign in.",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "nav": {
+    "home": "Home",
+    "learning": "Learning",
+    "community": "Community",
+    "communication": "Chat",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "home": {
+    "heroTitle": "Meet halfway",
+    "heroSubtitle": "Connect with Italian and Japanese language partners, share your culture, and learn together.",
+    "heroCta": "Start exploring",
+    "heroSecondaryCta": "How it works",
+    "featuredTitle": "Featured for you",
+    "activitiesTitle": "Latest activity",
+    "quickActionsTitle": "Quick actions",
+    "quickActions": {
+      "practice": "Practice vocabulary",
+      "findPartner": "Find a partner",
+      "joinCommunity": "Join community",
+      "startChat": "Start a chat"
+    },
+    "howItWorks": {
+      "title": "How Halfway works",
+      "intro": "Three simple steps to start learning and connecting.",
+      "step1Title": "1. Create your profile",
+      "step1Desc": "Tell us your native language and what you're learning.",
+      "step2Title": "2. Find a partner",
+      "step2Desc": "Match with Italian or Japanese speakers who share your interests.",
+      "step3Title": "3. Learn together",
+      "step3Desc": "Chat, exchange languages, and explore each other's culture.",
+      "cta": "Got it, let's start"
+    },
+    "featured": {
+      "wordOfDay": "Word of the day",
+      "wordOfDayDesc": "A new Italian and Japanese word, every day.",
+      "culturalTip": "Cultural tip",
+      "culturalTipDesc": "Small customs that make a big difference.",
+      "eventSpotlight": "Community event",
+      "eventSpotlightDesc": "Join a live language exchange this week."
+    }
+  },
+  "learning": {
+    "title": "Learning",
+    "subtitle": "Build your Italian and Japanese, one step at a time.",
+    "tabs": {
+      "vocabulary": "Vocabulary",
+      "expressions": "Expressions",
+      "grammar": "Grammar",
+      "progress": "Progress",
+      "bookmarks": "Bookmarks"
+    },
+    "vocabulary": {
+      "reveal": "Reveal meaning",
+      "saved": "Saved"
+    },
+    "grammar": {
+      "comingSoonTitle": "Grammar lessons are on the way",
+      "comingSoonDesc": "Structured grammar paths for Italian and Japanese are in development."
+    },
+    "progress": {
+      "comingSoonTitle": "Progress tracking is coming soon",
+      "comingSoonDesc": "Soon you'll see streaks, mastered words, and milestones here."
+    },
+    "bookmarks": {
+      "comingSoonTitle": "No bookmarks yet",
+      "comingSoonDesc": "Save vocabulary and expressions to find them here later."
+    }
+  },
+  "community": {
+    "title": "Community",
+    "subtitle": "Stories, questions, and moments from Italy and Japan.",
+    "newPost": "Share something",
+    "comments": "Comments",
+    "commentsComingSoon": "Comments are coming soon.",
+    "likes": "likes",
+    "peopleToMeet": "People to meet",
+    "connect": "Connect"
+  },
+  "communication": {
+    "title": "Chat",
+    "subtitle": "Every way to connect, all in one place.",
+    "privateChat": "Private Chat",
+    "privateChatDesc": "One-to-one conversations with your language partners.",
+    "translation": "Translation",
+    "translationDesc": "Real-time translation between Italian and Japanese.",
+    "voiceMessages": "Voice Messages",
+    "voiceMessagesDesc": "Practice pronunciation with recorded messages.",
+    "languageExchange": "Language Exchange",
+    "languageExchangeDesc": "Structured sessions to trade languages, fairly.",
+    "comingSoon": "Coming soon"
+  },
+  "profile": {
+    "editProfile": "Edit profile",
+    "bio": "Biography",
+    "country": "Country",
+    "languages": "Languages",
+    "native": "Native",
+    "learning": "Learning",
+    "stats": {
+      "streak": "Day streak",
+      "words": "Words learned",
+      "exchanges": "Exchanges",
+      "friends": "Friends"
+    },
+    "progressTitle": "Learning progress",
+    "progressComingSoon": "Detailed progress charts are coming soon."
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "language": "App language",
+    "notifications": "Notifications",
+    "notificationsPush": "Push notifications",
+    "notificationsEmail": "Email updates",
+    "privacy": "Privacy",
+    "privacyComingSoon": "Privacy controls are coming soon.",
+    "account": "Account"
+  },
+  "common": {
+    "seeAll": "See all",
+    "loading": "Loading",
+    "errorTitle": "Something went wrong",
+    "errorDesc": "Please try again in a moment.",
+    "retry": "Try again",
+    "install": "Install app",
+    "installDesc": "Add Halfway to your home screen for quick access.",
+    "installAction": "Install",
+    "dismiss": "Not now",
+    "offline": "You're offline. Some content may be limited.",
+    "search": "Search",
+    "searchPlaceholder": "Search Halfway"
+  }
+}

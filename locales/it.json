@@ -1,0 +1,163 @@
+{
+  "app": {
+    "name": "Halfway",
+    "tagline": "Incontrati a metà strada tra Italia e Giappone"
+  },
+  "auth": {
+    "welcomeTitle": "Benvenuto su Halfway",
+    "welcomeSubtitle": "Accedi o crea un account per connetterti con i tuoi partner linguistici.",
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "name": "Nome",
+    "namePlaceholder": "Il tuo nome",
+    "email": "Email",
+    "emailPlaceholder": "tu@esempio.com",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "signInAction": "Accedi",
+    "signUpAction": "Crea account",
+    "noAccount": "Non hai un account?",
+    "hasAccount": "Hai già un account?",
+    "switchToSignUp": "Registrati",
+    "switchToSignIn": "Accedi",
+    "signUpSuccess": "Account creato! Controlla la tua email per confermarla, poi accedi.",
+    "genericError": "Qualcosa è andato storto. Riprova."
+  },
+  "nav": {
+    "home": "Home",
+    "learning": "Impara",
+    "community": "Community",
+    "communication": "Chat",
+    "profile": "Profilo",
+    "settings": "Impostazioni"
+  },
+  "home": {
+    "heroTitle": "Incontratevi a metà strada",
+    "heroSubtitle": "Connettiti con partner linguistici italiani e giapponesi, condividi la tua cultura e impara insieme.",
+    "heroCta": "Inizia a esplorare",
+    "heroSecondaryCta": "Come funziona",
+    "featuredTitle": "In evidenza per te",
+    "activitiesTitle": "Attività recenti",
+    "quickActionsTitle": "Azioni rapide",
+    "quickActions": {
+      "practice": "Esercita il vocabolario",
+      "findPartner": "Trova un partner",
+      "joinCommunity": "Unisciti alla community",
+      "startChat": "Avvia una chat"
+    },
+    "howItWorks": {
+      "title": "Come funziona Halfway",
+      "intro": "Tre semplici passi per iniziare a imparare e connetterti.",
+      "step1Title": "1. Crea il tuo profilo",
+      "step1Desc": "Dicci qual è la tua lingua madre e cosa stai imparando.",
+      "step2Title": "2. Trova un partner",
+      "step2Desc": "Abbinati a persone italiane o giapponesi che condividono i tuoi interessi.",
+      "step3Title": "3. Impara insieme",
+      "step3Desc": "Chatta, scambia le lingue ed esplora la cultura dell'altro.",
+      "cta": "Ho capito, iniziamo"
+    },
+    "featured": {
+      "wordOfDay": "Parola del giorno",
+      "wordOfDayDesc": "Una nuova parola italiana e giapponese, ogni giorno.",
+      "culturalTip": "Consiglio culturale",
+      "culturalTipDesc": "Piccole usanze che fanno una grande differenza.",
+      "eventSpotlight": "Evento della community",
+      "eventSpotlightDesc": "Partecipa a uno scambio linguistico dal vivo questa settimana."
+    }
+  },
+  "learning": {
+    "title": "Impara",
+    "subtitle": "Costruisci il tuo italiano e giapponese, un passo alla volta.",
+    "tabs": {
+      "vocabulary": "Vocabolario",
+      "expressions": "Espressioni",
+      "grammar": "Grammatica",
+      "progress": "Progressi",
+      "bookmarks": "Salvati"
+    },
+    "vocabulary": {
+      "reveal": "Mostra il significato",
+      "saved": "Salvato"
+    },
+    "grammar": {
+      "comingSoonTitle": "Le lezioni di grammatica arriveranno presto",
+      "comingSoonDesc": "Percorsi di grammatica strutturati per italiano e giapponese sono in sviluppo."
+    },
+    "progress": {
+      "comingSoonTitle": "Il monitoraggio dei progressi arriverà presto",
+      "comingSoonDesc": "Presto vedrai qui serie di giorni, parole apprese e traguardi."
+    },
+    "bookmarks": {
+      "comingSoonTitle": "Nessun elemento salvato",
+      "comingSoonDesc": "Salva vocaboli ed espressioni per ritrovarli qui in seguito."
+    }
+  },
+  "community": {
+    "title": "Community",
+    "subtitle": "Storie, domande e momenti da Italia e Giappone.",
+    "newPost": "Condividi qualcosa",
+    "comments": "Commenti",
+    "commentsComingSoon": "I commenti arriveranno presto.",
+    "likes": "mi piace",
+    "peopleToMeet": "Persone da conoscere",
+    "connect": "Connetti"
+  },
+  "communication": {
+    "title": "Chat",
+    "subtitle": "Ogni modo per connettersi, tutto in un posto.",
+    "privateChat": "Chat privata",
+    "privateChatDesc": "Conversazioni individuali con i tuoi partner linguistici.",
+    "translation": "Traduzione",
+    "translationDesc": "Traduzione in tempo reale tra italiano e giapponese.",
+    "voiceMessages": "Messaggi vocali",
+    "voiceMessagesDesc": "Esercita la pronuncia con messaggi registrati.",
+    "languageExchange": "Scambio linguistico",
+    "languageExchangeDesc": "Sessioni strutturate per scambiare lingue, in modo equo.",
+    "comingSoon": "Prossimamente"
+  },
+  "profile": {
+    "editProfile": "Modifica profilo",
+    "bio": "Biografia",
+    "country": "Paese",
+    "languages": "Lingue",
+    "native": "Madrelingua",
+    "learning": "Sta imparando",
+    "stats": {
+      "streak": "Giorni consecutivi",
+      "words": "Parole apprese",
+      "exchanges": "Scambi",
+      "friends": "Amici"
+    },
+    "progressTitle": "Progressi di apprendimento",
+    "progressComingSoon": "I grafici dettagliati dei progressi arriveranno presto."
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "appearance": "Aspetto",
+    "theme": "Tema",
+    "themeLight": "Chiaro",
+    "themeDark": "Scuro",
+    "themeSystem": "Sistema",
+    "language": "Lingua dell'app",
+    "notifications": "Notifiche",
+    "notificationsPush": "Notifiche push",
+    "notificationsEmail": "Aggiornamenti via email",
+    "privacy": "Privacy",
+    "privacyComingSoon": "I controlli sulla privacy arriveranno presto.",
+    "account": "Account"
+  },
+  "common": {
+    "seeAll": "Vedi tutto",
+    "loading": "Caricamento",
+    "errorTitle": "Qualcosa è andato storto",
+    "errorDesc": "Riprova tra un momento.",
+    "retry": "Riprova",
+    "install": "Installa l'app",
+    "installDesc": "Aggiungi Halfway alla schermata home per un accesso rapido.",
+    "installAction": "Installa",
+    "dismiss": "Non ora",
+    "offline": "Sei offline. Alcuni contenuti potrebbero essere limitati.",
+    "search": "Cerca",
+    "searchPlaceholder": "Cerca in Halfway"
+  }
+}
