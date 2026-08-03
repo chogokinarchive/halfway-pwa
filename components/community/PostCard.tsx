@@ -19,7 +19,8 @@ export interface FeedPost {
   author_name: string;
   author_country: string;
   content: string;
-  image_url: string | null;
+  media_url: string | null;
+  media_type: "image" | "video" | null;
   created_at: string;
   like_count: number;
   comment_count: number;
@@ -120,12 +121,19 @@ export function PostCard({
 
         <p className="text-sm leading-relaxed">{post.content}</p>
 
-        {post.image_url && (
+        {post.media_url && post.media_type === "video" && (
+          <video
+            src={post.media_url}
+            controls
+            className="max-h-[32rem] w-full rounded-xl bg-muted"
+          />
+        )}
+        {post.media_url && post.media_type === "image" && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={post.image_url}
+            src={post.media_url}
             alt=""
-            className="max-h-96 w-full rounded-xl object-cover"
+            className="max-h-[32rem] w-full rounded-xl bg-muted object-contain"
             loading="lazy"
           />
         )}

@@ -171,6 +171,8 @@ create table if not exists posts (
   id uuid primary key default gen_random_uuid(),
   author_id uuid not null references profiles (id) on delete cascade,
   content text not null,
+  media_url text,
+  media_type text check (media_type in ('image', 'video')),
   created_at timestamptz not null default now()
 );
 
@@ -331,6 +333,34 @@ create policy "Users can send messages in their conversations"
 alter publication supabase_realtime add table messages;
 
 -- ------------------------------------------------------------
+-- STORAGE: bucket per le immagini dei post
+-- ------------------------------------------------------------
+insert into storage.buckets (id, name, public)
+values ('post-images', 'post-images', true)
+on conflict (id) do nothing;
+
+create policy "Public read access for post images"
+  on storage.objects for select
+  to public
+  using (bucket_id = 'post-images');
+
+create policy "Authenticated users can upload their own post images"
+  on storage.objects for insert
+  to authenticated
+  with check (
+    bucket_id = 'post-images'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+create policy "Users can delete their own post images"
+  on storage.objects for delete
+  to authenticated
+  using (
+    bucket_id = 'post-images'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+-- ------------------------------------------------------------
 -- VISTE DI COMODO (join già pronti per l'app)
 -- ------------------------------------------------------------
 
@@ -340,6 +370,8 @@ select
   p.id,
   p.author_id,
   p.content,
+  p.media_url,
+  p.media_type,
   p.created_at,
   pr.name as author_name,
   pr.country as author_country,

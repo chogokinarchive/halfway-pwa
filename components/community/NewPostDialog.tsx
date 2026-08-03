@@ -13,7 +13,10 @@ import {
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/lib/supabase/client";
 
-const MAX_FILE_SIZE_MB = 5;
+const MAX_IMAGE_SIZE_MB = 5;
+const MAX_VIDEO_SIZE_MB = 50;
+
+type MediaKind = "image" | "video";
 
 export function NewPostDialog({
   authorId,
@@ -25,16 +28,18 @@ export function NewPostDialog({
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState("");
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [mediaFile, setMediaFile] = useState<File | null>(null);
+  const [mediaKind, setMediaKind] = useState<MediaKind | null>(null);
+  const [mediaPreview, setMediaPreview] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const resetForm = () => {
     setContent("");
-    setImageFile(null);
-    setImagePreview(null);
+    setMediaFile(null);
+    setMediaKind(null);
+    setMediaPreview(null);
     setError(null);
   };
 
@@ -42,19 +47,33 @@ export function NewPostDialog({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-      setError(t("community.imageTooLarge"));
+    const kind: MediaKind | null = file.type.startsWith("image/")
+      ? "image"
+      : file.type.startsWith("video/")
+        ? "video"
+        : null;
+
+    if (!kind) {
+      setError(t("community.unsupportedMedia"));
+      return;
+    }
+
+    const maxMb = kind === "image" ? MAX_IMAGE_SIZE_MB : MAX_VIDEO_SIZE_MB;
+    if (file.size > maxMb * 1024 * 1024) {
+      setError(t("community.mediaTooLarge").replace("{max}", String(maxMb)));
       return;
     }
 
     setError(null);
-    setImageFile(file);
-    setImagePreview(URL.createObjectURL(file));
+    setMediaFile(file);
+    setMediaKind(kind);
+    setMediaPreview(URL.createObjectURL(file));
   };
 
-  const removeImage = () => {
-    setImageFile(null);
-    setImagePreview(null);
+  const removeMedia = () => {
+    setMediaFile(null);
+    setMediaKind(null);
+    setMediaPreview(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -64,15 +83,15 @@ export function NewPostDialog({
     setSubmitting(true);
     setError(null);
 
-    let imageUrl: string | null = null;
+    let mediaUrl: string | null = null;
 
-    if (imageFile) {
-      const ext = imageFile.name.split(".").pop() ?? "jpg";
+    if (mediaFile && mediaKind) {
+      const ext = mediaFile.name.split(".").pop() ?? "bin";
       const path = `${authorId}/${crypto.randomUUID()}.${ext}`;
 
       const { error: uploadError } = await supabase.storage
         .from("post-images")
-        .upload(path, imageFile);
+        .upload(path, mediaFile);
 
       if (uploadError) {
         setError(uploadError.message);
@@ -83,13 +102,14 @@ export function NewPostDialog({
       const { data: publicUrlData } = supabase.storage
         .from("post-images")
         .getPublicUrl(path);
-      imageUrl = publicUrlData.publicUrl;
+      mediaUrl = publicUrlData.publicUrl;
     }
 
     const { error: insertError } = await supabase.from("posts").insert({
       author_id: authorId,
       content: trimmed,
-      image_url: imageUrl,
+      media_url: mediaUrl,
+      media_type: mediaUrl ? mediaKind : null,
     });
 
     setSubmitting(false);
@@ -131,18 +151,18 @@ export function NewPostDialog({
           className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
 
-        {imagePreview ? (
-          <div className="relative mt-3 overflow-hidden rounded-xl border border-border">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imagePreview}
-              alt=""
-              className="h-48 w-full object-cover"
-            />
+        {mediaPreview ? (
+          <div className="relative mt-3 overflow-hidden rounded-xl border border-border bg-muted">
+            {mediaKind === "video" ? (
+              <video src={mediaPreview} controls className="max-h-64 w-full" />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={mediaPreview} alt="" className="max-h-64 w-full object-contain" />
+            )}
             <button
-              onClick={removeImage}
+              onClick={removeMedia}
               className="absolute right-2 top-2 rounded-full bg-background/90 p-1.5 text-foreground shadow"
-              aria-label="Remove image"
+              aria-label="Remove media"
             >
               <X className="h-4 w-4" />
             </button>
@@ -154,13 +174,13 @@ export function NewPostDialog({
             className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-border py-3 text-sm text-muted-foreground transition-colors hover:bg-accent"
           >
             <ImagePlus className="h-4 w-4" />
-            {t("community.addPhoto")}
+            {t("community.addMedia")}
           </button>
         )}
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/*"
+          accept="image/*,video/*"
           onChange={handleFileChange}
           className="hidden"
         />
