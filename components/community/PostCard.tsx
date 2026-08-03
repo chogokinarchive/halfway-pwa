@@ -98,7 +98,7 @@ export function PostCard({
   };
 
   return (
-    <Card>
+    <Card id={`post-${post.id}`} className="scroll-mt-20 transition-shadow">
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-3">
           <Avatar>

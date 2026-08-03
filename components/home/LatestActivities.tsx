@@ -50,7 +50,7 @@ export function LatestActivities() {
             {posts.map((post) => (
               <Link
                 key={post.id}
-                href="/community"
+                href={`/community#post-${post.id}`}
                 className="flex items-start gap-3 p-4 transition-colors hover:bg-accent"
               >
                 <Avatar className="h-9 w-9">
