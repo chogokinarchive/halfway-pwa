@@ -1,0 +1,165 @@
+{
+  "app": {
+    "name": "Halfway",
+    "tagline": "イタリアと日本の中間で出会う"
+  },
+  "auth": {
+    "welcomeTitle": "Halfwayへようこそ",
+    "welcomeSubtitle": "サインインまたはアカウントを作成して、言語パートナーとつながりましょう。",
+    "signIn": "サインイン",
+    "signUp": "新規登録",
+    "name": "名前",
+    "namePlaceholder": "お名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you@example.com",
+    "password": "パスワード",
+    "passwordPlaceholder": "••••••••",
+    "signInAction": "サインイン",
+    "signUpAction": "アカウントを作成",
+    "noAccount": "アカウントをお持ちでない方",
+    "hasAccount": "すでにアカウントをお持ちの方",
+    "switchToSignUp": "新規登録",
+    "switchToSignIn": "サインイン",
+    "signUpSuccess": "アカウントが作成されました！メールを確認してから、サインインしてください。",
+    "genericError": "問題が発生しました。もう一度お試しください。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "learning": "学習",
+    "community": "コミュニティ",
+    "communication": "チャット",
+    "profile": "プロフィール",
+    "settings": "設定"
+  },
+  "home": {
+    "heroTitle": "中間地点で出会おう",
+    "heroSubtitle": "イタリア語・日本語の学習パートナーとつながり、文化を共有しながら一緒に学びましょう。",
+    "heroCta": "探索を始める",
+    "heroSecondaryCta": "使い方を見る",
+    "featuredTitle": "おすすめ",
+    "activitiesTitle": "最新のアクティビティ",
+    "quickActionsTitle": "クイックアクション",
+    "quickActions": {
+      "practice": "単語を練習する",
+      "findPartner": "パートナーを探す",
+      "joinCommunity": "コミュニティに参加",
+      "startChat": "チャットを始める"
+    },
+    "howItWorks": {
+      "title": "Halfwayの使い方",
+      "intro": "学習とつながりを始めるための3つの簡単なステップ。",
+      "step1Title": "1. プロフィールを作成",
+      "step1Desc": "母語と学習中の言語を教えてください。",
+      "step2Title": "2. パートナーを見つける",
+      "step2Desc": "興味が合うイタリア語・日本語話者とマッチング。",
+      "step3Title": "3. 一緒に学ぶ",
+      "step3Desc": "チャットで言語を交換し、お互いの文化を探求しましょう。",
+      "cta": "了解、始めましょう"
+    },
+    "featured": {
+      "wordOfDay": "今日の単語",
+      "wordOfDayDesc": "毎日新しいイタリア語と日本語の単語。",
+      "culturalTip": "文化のヒント",
+      "culturalTipDesc": "小さな習慣が大きな違いを生みます。",
+      "eventSpotlight": "コミュニティイベント",
+      "eventSpotlightDesc": "今週開催のライブ言語交換に参加しよう。"
+    }
+  },
+  "learning": {
+    "title": "学習",
+    "subtitle": "一歩ずつ、イタリア語と日本語を身につけよう。",
+    "tabs": {
+      "vocabulary": "単語",
+      "expressions": "表現",
+      "grammar": "文法",
+      "progress": "進捗",
+      "bookmarks": "保存済み"
+    },
+    "vocabulary": {
+      "reveal": "意味を表示",
+      "saved": "保存済み"
+    },
+    "grammar": {
+      "comingSoonTitle": "文法レッスンは近日公開",
+      "comingSoonDesc": "イタリア語と日本語の体系的な文法コースを準備中です。"
+    },
+    "progress": {
+      "comingSoonTitle": "進捗トラッキングは近日公開",
+      "comingSoonDesc": "連続記録、習得した単語、マイルストーンがここに表示されます。"
+    },
+    "bookmarks": {
+      "comingSoonTitle": "まだ保存された項目はありません",
+      "comingSoonDesc": "単語や表現を保存すると、ここで確認できます。"
+    }
+  },
+  "community": {
+    "title": "コミュニティ",
+    "subtitle": "イタリアと日本からのストーリー、質問、瞬間。",
+    "newPost": "投稿する",
+    "addPhoto": "写真を追加",
+    "imageTooLarge": "画像は5MB以下にしてください",
+    "comments": "コメント",
+    "commentsComingSoon": "コメント機能は近日公開です。",
+    "likes": "いいね",
+    "peopleToMeet": "出会える人たち",
+    "connect": "つながる"
+  },
+  "communication": {
+    "title": "チャット",
+    "subtitle": "つながるすべての方法を、ひとつの場所に。",
+    "privateChat": "プライベートチャット",
+    "privateChatDesc": "言語パートナーとの一対一の会話。",
+    "translation": "翻訳",
+    "translationDesc": "イタリア語と日本語のリアルタイム翻訳。",
+    "voiceMessages": "ボイスメッセージ",
+    "voiceMessagesDesc": "録音メッセージで発音を練習。",
+    "languageExchange": "言語交換",
+    "languageExchangeDesc": "公平に言語を交換するための構造化セッション。",
+    "comingSoon": "近日公開"
+  },
+  "profile": {
+    "editProfile": "プロフィールを編集",
+    "bio": "自己紹介",
+    "country": "国",
+    "languages": "言語",
+    "native": "母語",
+    "learning": "学習中",
+    "stats": {
+      "streak": "連続日数",
+      "words": "習得した単語",
+      "exchanges": "交流回数",
+      "friends": "友達"
+    },
+    "progressTitle": "学習の進捗",
+    "progressComingSoon": "詳細な進捗グラフは近日公開です。"
+  },
+  "settings": {
+    "title": "設定",
+    "appearance": "外観",
+    "theme": "テーマ",
+    "themeLight": "ライト",
+    "themeDark": "ダーク",
+    "themeSystem": "システム",
+    "language": "アプリの言語",
+    "notifications": "通知",
+    "notificationsPush": "プッシュ通知",
+    "notificationsEmail": "メール通知",
+    "privacy": "プライバシー",
+    "privacyComingSoon": "プライバシー設定は近日公開です。",
+    "account": "アカウント"
+  },
+  "common": {
+    "seeAll": "すべて見る",
+    "loading": "読み込み中",
+    "errorTitle": "問題が発生しました",
+    "errorDesc": "しばらくしてからもう一度お試しください。",
+    "retry": "再試行",
+    "install": "アプリをインストール",
+    "installDesc": "ホーム画面にHalfwayを追加して、すばやくアクセス。",
+    "installAction": "インストール",
+    "dismiss": "後で",
+    "offline": "オフラインです。一部のコンテンツが制限される場合があります。",
+    "search": "検索",
+    "searchPlaceholder": "Halfwayを検索"
+  }
+}
