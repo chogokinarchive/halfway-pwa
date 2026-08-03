@@ -19,6 +19,7 @@ export interface FeedPost {
   author_name: string;
   author_country: string;
   content: string;
+  image_url: string | null;
   created_at: string;
   like_count: number;
   comment_count: number;
@@ -118,6 +119,16 @@ export function PostCard({
         </div>
 
         <p className="text-sm leading-relaxed">{post.content}</p>
+
+        {post.image_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.image_url}
+            alt=""
+            className="max-h-96 w-full rounded-xl object-cover"
+            loading="lazy"
+          />
+        )}
 
         <div className="flex items-center gap-4 border-t border-border pt-3 text-sm text-muted-foreground">
           <button
