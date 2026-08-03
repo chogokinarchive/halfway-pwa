@@ -30,6 +30,7 @@ export interface PostRow {
   id: string;
   author_id: string;
   content: string;
+  image_url: string | null;
   created_at: string;
 }
 
