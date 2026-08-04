@@ -24,12 +24,14 @@ export function UserCard({
   const router = useRouter();
   const [connected, setConnected] = useState(alreadyConnected);
   const [connecting, setConnecting] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
 
   const handleConnect = async () => {
-    if (connected || connecting) {
-      if (connected) router.push("/communication");
+    if (connected && conversationId) {
+      router.push(`/communication/${conversationId}`);
       return;
     }
+    if (connecting) return;
     setConnecting(true);
 
     const [userA, userB] =
@@ -39,13 +41,19 @@ export function UserCard({
       { user_a: userA, user_b: userB },
       { onConflict: "user_a,user_b" }
     );
-    await supabase.from("conversations").upsert(
-      { user_a: userA, user_b: userB },
-      { onConflict: "user_a,user_b" }
-    );
+    const { data: conversation } = await supabase
+      .from("conversations")
+      .upsert({ user_a: userA, user_b: userB }, { onConflict: "user_a,user_b" })
+      .select("id")
+      .single();
 
     setConnected(true);
     setConnecting(false);
+
+    if (conversation) {
+      setConversationId(conversation.id);
+      router.push(`/communication/${conversation.id}`);
+    }
   };
 
   return (

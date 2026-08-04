@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import {
   Sun,
@@ -164,12 +165,14 @@ export default function SettingsPage() {
         </h2>
         <Card>
           <CardContent className="space-y-2 p-4">
-            <Button variant="outline" className="w-full gap-2">
-              <UserCircle className="h-4 w-4" />
-              {t("profile.editProfile")}
+            <Button variant="outline" className="w-full gap-2" asChild>
+              <Link href="/profile">
+                <UserCircle className="h-4 w-4" />
+                {t("profile.editProfile")}
+              </Link>
             </Button>
             <Button variant="ghost" className="w-full" onClick={signOut}>
-              Sign out
+              {t("settings.signOut")}
             </Button>
           </CardContent>
         </Card>

@@ -86,6 +86,7 @@
       "reveal": "Mostra il significato",
       "saved": "Salvato"
     },
+    "allCategories": "Tutte",
     "grammar": {
       "comingSoonTitle": "Le lezioni di grammatica arriveranno presto",
       "comingSoonDesc": "Percorsi di grammatica strutturati per italiano e giapponese sono in sviluppo."
@@ -156,7 +157,8 @@
     "notificationsEmail": "Aggiornamenti via email",
     "privacy": "Privacy",
     "privacyComingSoon": "I controlli sulla privacy arriveranno presto.",
-    "account": "Account"
+    "account": "Account",
+    "signOut": "Esci"
   },
   "common": {
     "seeAll": "Vedi tutto",

@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bookmark } from "lucide-react";
+import { Bookmark, Volume2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/lib/supabase/client";
+import { speakJapanese } from "@/lib/speech";
 import { cn } from "@/lib/utils";
 import type { ExpressionItem } from "@/types";
 
@@ -56,16 +57,25 @@ export function ExpressionCard({
       <CardContent className="space-y-2 p-4">
         <div className="flex items-start justify-between">
           <Badge variant="outline">{item.context}</Badge>
-          <button
-            aria-label={t("learning.vocabulary.saved")}
-            onClick={toggleSaved}
-            className={cn(
-              "rounded-lg p-1.5 transition-colors hover:bg-accent",
-              saved ? "text-primary" : "text-muted-foreground hover:text-foreground"
-            )}
-          >
-            <Bookmark className={cn("h-4 w-4", saved && "fill-primary")} />
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              aria-label="Play pronunciation"
+              onClick={() => speakJapanese(item.japanese)}
+              className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            >
+              <Volume2 className="h-4 w-4" />
+            </button>
+            <button
+              aria-label={t("learning.vocabulary.saved")}
+              onClick={toggleSaved}
+              className={cn(
+                "rounded-lg p-1.5 transition-colors hover:bg-accent",
+                saved ? "text-primary" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <Bookmark className={cn("h-4 w-4", saved && "fill-primary")} />
+            </button>
+          </div>
         </div>
 
         <div className="grid gap-1 sm:grid-cols-2">

@@ -86,6 +86,7 @@
       "reveal": "意味を表示",
       "saved": "保存済み"
     },
+    "allCategories": "すべて",
     "grammar": {
       "comingSoonTitle": "文法レッスンは近日公開",
       "comingSoonDesc": "イタリア語と日本語の体系的な文法コースを準備中です。"
@@ -156,7 +157,8 @@
     "notificationsEmail": "メール通知",
     "privacy": "プライバシー",
     "privacyComingSoon": "プライバシー設定は近日公開です。",
-    "account": "アカウント"
+    "account": "アカウント",
+    "signOut": "サインアウト"
   },
   "common": {
     "seeAll": "すべて見る",

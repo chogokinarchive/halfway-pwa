@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Languages, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -56,9 +56,8 @@ export default function AuthPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Languages className="h-4 w-4" />
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/icon-192.png" alt="" className="h-8 w-8 rounded-lg" />
           <span className="font-semibold tracking-tight">{t("app.name")}</span>
         </div>
         <LanguageSelector />

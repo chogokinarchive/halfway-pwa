@@ -86,6 +86,7 @@
       "reveal": "Reveal meaning",
       "saved": "Saved"
     },
+    "allCategories": "All",
     "grammar": {
       "comingSoonTitle": "Grammar lessons are on the way",
       "comingSoonDesc": "Structured grammar paths for Italian and Japanese are in development."
@@ -156,7 +157,8 @@
     "notificationsEmail": "Email updates",
     "privacy": "Privacy",
     "privacyComingSoon": "Privacy controls are coming soon.",
-    "account": "Account"
+    "account": "Account",
+    "signOut": "Sign out"
   },
   "common": {
     "seeAll": "See all",

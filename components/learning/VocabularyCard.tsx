@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/lib/supabase/client";
+import { speakJapanese } from "@/lib/speech";
 import { cn } from "@/lib/utils";
 import type { VocabularyItem } from "@/types";
 
@@ -58,6 +59,7 @@ export function VocabularyCard({
         <div className="flex items-center gap-1">
           <button
             aria-label="Play pronunciation"
+            onClick={() => speakJapanese(item.japanese)}
             className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <Volume2 className="h-4 w-4" />

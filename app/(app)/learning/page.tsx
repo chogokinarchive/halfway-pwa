@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { BookMarked, Flame, SpellCheck2, BookOpenCheck } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { VocabularyCard } from "@/components/learning/VocabularyCard";
 import { ExpressionCard } from "@/components/learning/ExpressionCard";
 import { ComingSoonSection } from "@/components/learning/ComingSoonSection";
@@ -21,6 +22,16 @@ export default function LearningPage() {
     null
   );
   const [stats, setStats] = useState<{ words: number; streak: number } | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categories = useMemo(
+    () => Array.from(new Set(VOCABULARY.map((item) => item.category))),
+    []
+  );
+
+  const visibleVocabulary = selectedCategory
+    ? VOCABULARY.filter((item) => item.category === selectedCategory)
+    : VOCABULARY;
 
   const loadProgress = useCallback(async () => {
     if (!user) return;
@@ -73,8 +84,27 @@ export default function LearningPage() {
         </TabsList>
 
         <TabsContent value="vocabulary">
+          <div className="mb-3 flex flex-wrap gap-2">
+            <Badge
+              variant={selectedCategory === null ? "default" : "outline"}
+              className="cursor-pointer"
+              onClick={() => setSelectedCategory(null)}
+            >
+              {t("learning.allCategories")}
+            </Badge>
+            {categories.map((category) => (
+              <Badge
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                className="cursor-pointer"
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </Badge>
+            ))}
+          </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {VOCABULARY.map((item) => (
+            {visibleVocabulary.map((item) => (
               <VocabularyCard
                 key={item.id}
                 item={item}

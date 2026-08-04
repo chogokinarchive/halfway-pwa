@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Languages, Settings, LogOut } from "lucide-react";
+import { Settings, LogOut } from "lucide-react";
 import { LanguageSelector } from "@/components/shared/LanguageSelector";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -22,9 +22,8 @@ export function Header() {
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 md:hidden">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Languages className="h-4 w-4" />
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/icon-192.png" alt="" className="h-8 w-8 rounded-lg" />
           <span className="font-semibold tracking-tight">{t("app.name")}</span>
         </Link>
 
