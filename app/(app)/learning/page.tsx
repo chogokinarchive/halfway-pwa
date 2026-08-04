@@ -25,7 +25,7 @@ export default function LearningPage() {
   const loadProgress = useCallback(async () => {
     if (!user) return;
 
-    const [vocabRes, statsRes] = await Promise.all([
+    const [progressRes, statsRes] = await Promise.all([
       supabase.from("vocabulary_progress").select("*").eq("user_id", user.id),
       supabase
         .from("learning_progress")
@@ -35,7 +35,7 @@ export default function LearningPage() {
     ]);
 
     const map = new Map<string, VocabularyProgressRow>();
-    vocabRes.data?.forEach((row) => map.set(row.vocabulary_id, row));
+    progressRes.data?.forEach((row) => map.set(row.vocabulary_id, row));
     setProgressRows(map);
 
     setStats({
@@ -52,7 +52,9 @@ export default function LearningPage() {
     return null;
   }
 
-  const savedItems = VOCABULARY.filter((item) => progressRows.get(item.id)?.saved);
+  const savedVocabulary = VOCABULARY.filter((item) => progressRows.get(item.id)?.saved);
+  const savedExpressions = EXPRESSIONS.filter((item) => progressRows.get(item.id)?.saved);
+  const hasSavedItems = savedVocabulary.length > 0 || savedExpressions.length > 0;
 
   return (
     <div className="space-y-6">
@@ -88,7 +90,14 @@ export default function LearningPage() {
         <TabsContent value="expressions">
           <div className="grid gap-3 sm:grid-cols-2">
             {EXPRESSIONS.map((item) => (
-              <ExpressionCard key={item.id} item={item} />
+              <ExpressionCard
+                key={item.id}
+                item={item}
+                userId={user.id}
+                initialSaved={progressRows.get(item.id)?.saved ?? false}
+                initialLearned={progressRows.get(item.id)?.learned ?? false}
+                onProgressChange={loadProgress}
+              />
             ))}
           </div>
         </TabsContent>
@@ -119,24 +128,42 @@ export default function LearningPage() {
         </TabsContent>
 
         <TabsContent value="bookmarks">
-          {savedItems.length === 0 ? (
+          {!hasSavedItems ? (
             <ComingSoonSection
               icon={BookMarked}
               title={t("learning.bookmarks.comingSoonTitle")}
               description={t("learning.bookmarks.comingSoonDesc")}
             />
           ) : (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {savedItems.map((item) => (
-                <VocabularyCard
-                  key={item.id}
-                  item={item}
-                  userId={user.id}
-                  initialSaved={progressRows.get(item.id)?.saved ?? false}
-                  initialLearned={progressRows.get(item.id)?.learned ?? false}
-                  onProgressChange={loadProgress}
-                />
-              ))}
+            <div className="space-y-6">
+              {savedVocabulary.length > 0 && (
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {savedVocabulary.map((item) => (
+                    <VocabularyCard
+                      key={item.id}
+                      item={item}
+                      userId={user.id}
+                      initialSaved
+                      initialLearned={progressRows.get(item.id)?.learned ?? false}
+                      onProgressChange={loadProgress}
+                    />
+                  ))}
+                </div>
+              )}
+              {savedExpressions.length > 0 && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {savedExpressions.map((item) => (
+                    <ExpressionCard
+                      key={item.id}
+                      item={item}
+                      userId={user.id}
+                      initialSaved
+                      initialLearned={progressRows.get(item.id)?.learned ?? false}
+                      onProgressChange={loadProgress}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </TabsContent>

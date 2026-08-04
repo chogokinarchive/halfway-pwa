@@ -57,22 +57,6 @@ export default function CommunityPage() {
     loadFeed();
   }, [loadFeed]);
 
-  useEffect(() => {
-    if (!posts || posts.length === 0) return;
-    const hash = window.location.hash;
-    if (!hash) return;
-
-    const target = document.querySelector(hash);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      target.classList.add("ring-2", "ring-primary");
-      const timeout = setTimeout(() => {
-        target.classList.remove("ring-2", "ring-primary");
-      }, 2000);
-      return () => clearTimeout(timeout);
-    }
-  }, [posts]);
-
   if (!user) return null;
 
   return (

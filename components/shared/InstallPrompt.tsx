@@ -23,10 +23,10 @@ export function InstallPrompt() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const dismissed = window.localStorage.getItem(DISMISS_KEY);
-    if (dismissed) return;
-
     const handler = (event: Event) => {
+      const dismissed = window.localStorage.getItem(DISMISS_KEY);
+      if (dismissed) return;
+
       event.preventDefault();
       setDeferredPrompt(event as BeforeInstallPromptEvent);
       setVisible(true);

@@ -61,8 +61,15 @@
       "wordOfDayDesc": "Una nuova parola italiana e giapponese, ogni giorno.",
       "culturalTip": "Consiglio culturale",
       "culturalTipDesc": "Piccole usanze che fanno una grande differenza.",
-      "eventSpotlight": "Evento della community",
-      "eventSpotlightDesc": "Partecipa a uno scambio linguistico dal vivo questa settimana."
+      "eventSpotlight": "Attività della community",
+      "eventSpotlightDesc": "Partecipa a uno scambio linguistico dal vivo questa settimana.",
+      "eventCountToday": "{count} nuovi post nella community oggi",
+      "culturalTips": [
+        "In Giappone è considerato educato risucchiare rumorosamente gli spaghetti — dimostra che stai apprezzando il pasto e aiuta persino a raffreddarlo. In Italia, lo stesso rumore a tavola susciterebbe qualche sguardo perplesso.",
+        "Gli italiani salutano amici stretti e familiari con un bacio su entrambe le guance, partendo da destra. In Giappone, un leggero inchino è il saluto più comune, anche tra amici.",
+        "La puntualità ha un peso diverso nelle due culture: in Giappone, arrivare anche solo un minuto in ritardo è insolito e può sembrare mancanza di rispetto. In Italia, arrivare 10-15 minuti in ritardo a un incontro informale è spesso del tutto normale.",
+        "Fare regali in Giappone è un rituale delicato — i regali vengono spesso incartati con cura e offerti con entrambe le mani. In Italia i regali sono generalmente più informali, ma occhio a non portare mai un numero dispari di fiori, a meno che non siano crisantemi, riservati ai funerali."
+      ]
     }
   },
   "learning": {

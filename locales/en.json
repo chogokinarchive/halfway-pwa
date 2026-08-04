@@ -61,8 +61,15 @@
       "wordOfDayDesc": "A new Italian and Japanese word, every day.",
       "culturalTip": "Cultural tip",
       "culturalTipDesc": "Small customs that make a big difference.",
-      "eventSpotlight": "Community event",
-      "eventSpotlightDesc": "Join a live language exchange this week."
+      "eventSpotlight": "Community pulse",
+      "eventSpotlightDesc": "Join a live language exchange this week.",
+      "eventCountToday": "{count} new posts in the community today",
+      "culturalTips": [
+        "In Japan, it's considered polite to slurp your noodles — it shows you're enjoying the meal and even helps cool it down. In Italy, the same sound at the table would raise eyebrows.",
+        "Italians greet close friends and family with a kiss on both cheeks, starting from the right. In Japan, a slight bow is the more common greeting, even among friends.",
+        "Punctuality carries different weight in each culture: in Japan, arriving even a minute late is unusual and can seem disrespectful. In Italy, arriving 10-15 minutes late to a casual gathering is often completely normal.",
+        "Gift-giving in Japan is a careful ritual — gifts are often wrapped elaborately and given with both hands. In Italy, gifts are usually more casual, but never bring an odd number of flowers unless it's chrysanthemums, which are reserved for funerals."
+      ]
     }
   },
   "learning": {
