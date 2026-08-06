@@ -89,7 +89,27 @@
     "allCategories": "すべて",
     "grammar": {
       "comingSoonTitle": "文法レッスンは近日公開",
-      "comingSoonDesc": "イタリア語と日本語の体系的な文法コースを準備中です。"
+      "comingSoonDesc": "イタリア語と日本語の体系的な文法コースを準備中です。",
+      "italianTitle": "イタリア語の基礎",
+      "japaneseTitle": "日本語の基礎",
+      "lessons": {
+        "it1Title": "名詞の性",
+        "it1Desc": "イタリア語の名詞には男性形と女性形があります。男性名詞は-oで終わることが多く（il libro）、女性名詞は-aで終わります（la casa）。冠詞と形容詞も性に一致させます：il libro rosso、la casa rossa。",
+        "it2Title": "現在形の動詞",
+        "it2Desc": "規則動詞は語尾によって3グループに分かれます：-are（parlare）、-ere（vedere）、-ire（dormire）。それぞれio, tu, lui/lei, noi, voi, loroに応じた語尾変化があります。",
+        "it3Title": "EssereとAvere",
+        "it3Desc": "「essere」（〜である）と「avere」（持つ）は最も重要な2つの動詞で、単独でも、複合時制（passato composto）を作る際にも使われます。",
+        "it4Title": "名詞の複数形",
+        "it4Desc": "ほとんどの名詞は最後の母音を変えて複数形を作ります：-oと-eは-iに（libro→libri、chiave→chiavi）、-aは-eに（casa→case）。",
+        "ja1Title": "文の順序：SOV",
+        "ja1Desc": "日本語の文はイタリア語のSVO（主語-動詞-目的語）とは異なり、SOV（主語-目的語-動詞）の順序です。「私は寿司を食べます」がその例です。",
+        "ja2Title": "助詞 は、が、を",
+        "ja2Desc": "助詞は各語の役割を示します。「は」はトピックを、「が」は主語を、「を」は動詞の目的語を示します。",
+        "ja3Title": "丁寧語と普通形",
+        "ja3Desc": "動詞には丁寧形（です/ます、初対面や公式な場で使用）と普通形（親しい友人や家族との会話で使用）があります。",
+        "ja4Title": "複数形も性別もない",
+        "ja4Desc": "日本語の名詞は単数・複数や性別で変化しません。「猫」は「1匹の猫」も「複数の猫」も意味し、文脈で判断します。"
+      }
     },
     "progress": {
       "comingSoonTitle": "進捗トラッキングは近日公開",
@@ -120,13 +140,32 @@
     "subtitle": "つながるすべての方法を、ひとつの場所に。",
     "privateChat": "プライベートチャット",
     "privateChatDesc": "言語パートナーとの一対一の会話。",
-    "translation": "翻訳",
-    "translationDesc": "イタリア語と日本語のリアルタイム翻訳。",
+    "translation": "フレーズ集",
+    "translationDesc": "厳選したイタリア語↔日本語のフレーズ集を検索。",
     "voiceMessages": "ボイスメッセージ",
-    "voiceMessagesDesc": "録音メッセージで発音を練習。",
+    "voiceMessagesDesc": "チャットを開いてボイスメッセージを録音・送信。",
     "languageExchange": "言語交換",
-    "languageExchangeDesc": "公平に言語を交換するための構造化セッション。",
-    "comingSoon": "近日公開"
+    "languageExchangeDesc": "チャットを開いて交換セッションを提案。",
+    "comingSoon": "近日公開",
+    "phrasebookTitle": "フレーズ集",
+    "phrasebookPlaceholder": "イタリア語、日本語、英語で検索…",
+    "phrasebookNoResults": "フレーズ集に一致する項目が見つかりません。",
+    "recording": "録音中…",
+    "voiceMessagePlaceholder": "🎤 ボイスメッセージ",
+    "exchangeTitle": "言語交換セッション",
+    "exchangePropose": "セッションを提案",
+    "exchangeDate": "日時",
+    "exchangeNote": "メモ（任意）",
+    "exchangeNotePlaceholder": "例：30分、イタリア語と日本語半々",
+    "exchangeSubmit": "提案を送信",
+    "exchangeAccept": "承諾",
+    "exchangeDecline": "辞退",
+    "exchangeStatusProposed": "提案中",
+    "exchangeStatusAccepted": "承諾済み",
+    "exchangeStatusDeclined": "辞退済み",
+    "exchangeEmpty": "まだ交換セッションはありません。",
+    "exchangeProposedByYou": "あなたが提案",
+    "exchangeProposedByThem": "相手が提案"
   },
   "profile": {
     "editProfile": "プロフィールを編集",
@@ -142,7 +181,8 @@
       "friends": "友達"
     },
     "progressTitle": "学習の進捗",
-    "progressComingSoon": "詳細な進捗グラフは近日公開です。"
+    "progressComingSoon": "詳細な進捗グラフは近日公開です。",
+    "avatarTooLarge": "写真は5MB以下にしてください"
   },
   "settings": {
     "title": "設定",

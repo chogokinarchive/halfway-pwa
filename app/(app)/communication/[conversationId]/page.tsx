@@ -5,8 +5,10 @@ import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
+import { VoiceRecorderButton } from "@/components/communication/VoiceRecorderButton";
+import { ExchangeSessionsDialog } from "@/components/communication/ExchangeSessionsDialog";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAuth } from "@/lib/auth/context";
 import { supabase } from "@/lib/supabase/client";
@@ -22,10 +24,20 @@ export default function ChatThreadPage() {
   const conversationId = params.conversationId;
 
   const [otherUserName, setOtherUserName] = useState<string>("");
+  const [otherUserAvatar, setOtherUserAvatar] = useState<string | null>(null);
   const [messages, setMessages] = useState<MessageRow[] | null>(null);
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const refreshMessages = async () => {
+    const { data: msgs } = await supabase
+      .from("messages")
+      .select("*")
+      .eq("conversation_id", conversationId)
+      .order("created_at", { ascending: true });
+    setMessages(msgs ?? []);
+  };
 
   useEffect(() => {
     if (!user || !conversationId) return;
@@ -43,10 +55,11 @@ export default function ChatThreadPage() {
         const otherId = conv.user_a === user.id ? conv.user_b : conv.user_a;
         const { data: profile } = await supabase
           .from("profiles")
-          .select("name")
+          .select("name, avatar_url")
           .eq("id", otherId)
           .single();
         setOtherUserName(profile?.name ?? "?");
+        setOtherUserAvatar(profile?.avatar_url ?? null);
       }
 
       const { data: msgs } = await supabase
@@ -118,9 +131,11 @@ export default function ChatThreadPage() {
           <ArrowLeft className="h-4 w-4" />
         </Button>
         <Avatar className="h-9 w-9">
+          {otherUserAvatar && <AvatarImage src={otherUserAvatar} alt="" />}
           <AvatarFallback>{otherUserName.charAt(0)}</AvatarFallback>
         </Avatar>
-        <p className="font-medium">{otherUserName}</p>
+        <p className="flex-1 font-medium">{otherUserName}</p>
+        <ExchangeSessionsDialog conversationId={conversationId} currentUserId={user.id} />
       </div>
 
       <div className="flex-1 space-y-3 overflow-y-auto py-4">
@@ -141,7 +156,11 @@ export default function ChatThreadPage() {
                     : "bg-muted text-foreground"
                 )}
               >
-                <p>{message.content}</p>
+                {message.media_type === "audio" && message.media_url ? (
+                  <audio src={message.media_url} controls className="h-9 max-w-[220px]" />
+                ) : (
+                  <p>{message.content}</p>
+                )}
                 <p
                   className={cn(
                     "mt-1 text-[10px] opacity-70",
@@ -163,6 +182,11 @@ export default function ChatThreadPage() {
           onChange={(e) => setDraft(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           placeholder={t("communication.privateChat")}
+        />
+        <VoiceRecorderButton
+          conversationId={conversationId}
+          senderId={user.id}
+          onSent={refreshMessages}
         />
         <Button size="icon" onClick={sendMessage} disabled={sending || !draft.trim()}>
           {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}

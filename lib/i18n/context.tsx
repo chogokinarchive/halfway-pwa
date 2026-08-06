@@ -35,10 +35,21 @@ function getFromPath(obj: unknown, path: string): string | undefined {
   return typeof result === "string" ? result : undefined;
 }
 
+function getRawFromPath(obj: unknown, path: string): unknown {
+  return path
+    .split(".")
+    .reduce<unknown>(
+      (acc, key) =>
+        acc && typeof acc === "object" ? (acc as Record<string, unknown>)[key] : undefined,
+      obj
+    );
+}
+
 interface I18nContextValue {
   locale: SupportedLocale;
   setLocale: (locale: SupportedLocale) => void;
   t: (key: string) => string;
+  tRaw: (key: string) => unknown;
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -73,7 +84,20 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     [locale]
   );
 
-  const value = useMemo(() => ({ locale, setLocale, t }), [locale, setLocale, t]);
+  const tRaw = useCallback(
+    (key: string): unknown => {
+      return (
+        getRawFromPath(dictionaries[locale], key) ??
+        getRawFromPath(dictionaries[DEFAULT_LOCALE], key)
+      );
+    },
+    [locale]
+  );
+
+  const value = useMemo(
+    () => ({ locale, setLocale, t, tRaw }),
+    [locale, setLocale, t, tRaw]
+  );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }

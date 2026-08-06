@@ -1,13 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { BookMarked, Flame, SpellCheck2, BookOpenCheck } from "lucide-react";
+import { BookMarked, Flame, BookOpenCheck } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { VocabularyCard } from "@/components/learning/VocabularyCard";
 import { ExpressionCard } from "@/components/learning/ExpressionCard";
 import { ComingSoonSection } from "@/components/learning/ComingSoonSection";
+import { GrammarSection } from "@/components/learning/GrammarSection";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAuth } from "@/lib/auth/context";
 import { supabase } from "@/lib/supabase/client";
@@ -133,10 +134,17 @@ export default function LearningPage() {
         </TabsContent>
 
         <TabsContent value="grammar">
-          <ComingSoonSection
-            icon={SpellCheck2}
-            title={t("learning.grammar.comingSoonTitle")}
-            description={t("learning.grammar.comingSoonDesc")}
+          <GrammarSection
+            italianTitle={t("learning.grammar.italianTitle")}
+            japaneseTitle={t("learning.grammar.japaneseTitle")}
+            italianLessons={[1, 2, 3, 4].map((n) => ({
+              title: t(`learning.grammar.lessons.it${n}Title`),
+              description: t(`learning.grammar.lessons.it${n}Desc`),
+            }))}
+            japaneseLessons={[1, 2, 3, 4].map((n) => ({
+              title: t(`learning.grammar.lessons.ja${n}Title`),
+              description: t(`learning.grammar.lessons.ja${n}Desc`),
+            }))}
           />
         </TabsContent>
 

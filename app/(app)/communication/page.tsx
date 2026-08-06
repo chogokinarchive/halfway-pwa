@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Languages, Mic, Repeat, MessageSquare } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FeatureTile } from "@/components/communication/FeatureTile";
+import { PhrasebookDialog } from "@/components/communication/PhrasebookDialog";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -17,6 +19,7 @@ interface ConversationListItem {
   id: string;
   other_user_id: string;
   other_user_name: string;
+  other_user_avatar_url: string | null;
   last_message: string | null;
   last_message_at: string | null;
 }
@@ -24,6 +27,7 @@ interface ConversationListItem {
 export default function CommunicationPage() {
   const { t, locale } = useTranslation();
   const { user } = useAuth();
+  const router = useRouter();
   const [conversations, setConversations] = useState<ConversationListItem[] | null>(null);
 
   useEffect(() => {
@@ -43,22 +47,32 @@ export default function CommunicationPage() {
       const otherIds = convRows.map((c) => c.other_user_id);
       const { data: profiles } = await supabase
         .from("profiles")
-        .select("id, name")
+        .select("id, name, avatar_url")
         .in("id", otherIds);
 
       const nameById = new Map(profiles?.map((p) => [p.id, p.name]));
+      const avatarById = new Map(profiles?.map((p) => [p.id, p.avatar_url]));
 
       setConversations(
         convRows.map((c) => ({
           id: c.id,
           other_user_id: c.other_user_id,
           other_user_name: nameById.get(c.other_user_id) ?? "?",
+          other_user_avatar_url: avatarById.get(c.other_user_id) ?? null,
           last_message: c.last_message,
           last_message_at: c.last_message_at,
         }))
       );
     })();
   }, [user]);
+
+  const goToFirstChatOrCommunity = () => {
+    if (conversations && conversations.length > 0) {
+      router.push(`/communication/${conversations[0].id}`);
+    } else {
+      router.push("/community");
+    }
+  };
 
   const features = [
     {
@@ -70,11 +84,13 @@ export default function CommunicationPage() {
       icon: Mic,
       title: t("communication.voiceMessages"),
       description: t("communication.voiceMessagesDesc"),
+      onClick: goToFirstChatOrCommunity,
     },
     {
       icon: Repeat,
       title: t("communication.languageExchange"),
       description: t("communication.languageExchangeDesc"),
+      onClick: goToFirstChatOrCommunity,
     },
   ];
 
@@ -106,6 +122,9 @@ export default function CommunicationPage() {
               <Card className="transition-colors hover:bg-accent">
                 <CardContent className="flex items-center gap-3 p-4">
                   <Avatar>
+                    {conv.other_user_avatar_url && (
+                      <AvatarImage src={conv.other_user_avatar_url} alt="" />
+                    )}
                     <AvatarFallback>{conv.other_user_name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="min-w-0 flex-1">
@@ -135,7 +154,19 @@ export default function CommunicationPage() {
           {t("communication.title")}
         </h2>
         <div className="grid gap-3 sm:grid-cols-2">
-          {features.map((feature) => (
+          <PhrasebookDialog
+            trigger={
+              <div>
+                <FeatureTile
+                  icon={features[0].icon}
+                  title={features[0].title}
+                  description={features[0].description}
+                  onClick={() => {}}
+                />
+              </div>
+            }
+          />
+          {features.slice(1).map((feature) => (
             <FeatureTile key={feature.title} {...feature} />
           ))}
         </div>

@@ -89,7 +89,27 @@
     "allCategories": "Tutte",
     "grammar": {
       "comingSoonTitle": "Le lezioni di grammatica arriveranno presto",
-      "comingSoonDesc": "Percorsi di grammatica strutturati per italiano e giapponese sono in sviluppo."
+      "comingSoonDesc": "Percorsi di grammatica strutturati per italiano e giapponese sono in sviluppo.",
+      "italianTitle": "Basi di italiano",
+      "japaneseTitle": "Basi di giapponese",
+      "lessons": {
+        "it1Title": "Nomi con genere",
+        "it1Desc": "I nomi italiani sono maschili o femminili. Quelli maschili spesso finiscono in -o (il libro), quelli femminili in -a (la casa). Articoli e aggettivi devono concordare: il libro rosso, la casa rossa.",
+        "it2Title": "Verbi al presente",
+        "it2Desc": "I verbi regolari si dividono in tre gruppi per desinenza: -are (parlare), -ere (vedere), -ire (dormire). Ognuno ha le proprie desinenze per io, tu, lui/lei, noi, voi, loro.",
+        "it3Title": "Essere e Avere",
+        "it3Desc": "\"Essere\" e \"avere\" sono i due verbi più importanti, usati sia da soli che per costruire tempi composti come il passato composto.",
+        "it4Title": "Nomi al plurale",
+        "it4Desc": "La maggior parte dei nomi cambia la vocale finale per formare il plurale: -o e -e diventano -i (libro → libri, chiave → chiavi), -a diventa -e (casa → case).",
+        "ja1Title": "Ordine della frase: SOV",
+        "ja1Desc": "Le frasi giapponesi seguono l'ordine Soggetto-Oggetto-Verbo, diversamente dall'italiano Soggetto-Verbo-Oggetto. \"Watashi wa sushi wo tabemasu\" significa letteralmente \"Io sushi mangio\".",
+        "ja2Title": "Particelle は, が, を",
+        "ja2Desc": "Le particelle indicano il ruolo di ogni parola. は (wa) segna l'argomento, が (ga) il soggetto, を (wo) l'oggetto del verbo.",
+        "ja3Title": "Forma cortese e forma semplice",
+        "ja3Desc": "I verbi hanno una forma cortese (desu/masu, usata con estranei o in contesti formali) e una forma semplice (usata con amici stretti e familiari).",
+        "ja4Title": "Nessun plurale, nessun genere",
+        "ja4Desc": "I nomi giapponesi non cambiano per singolare/plurale o genere — \"neko\" significa sia \"gatto\" che \"gatti\", è il contesto a chiarire."
+      }
     },
     "progress": {
       "comingSoonTitle": "Il monitoraggio dei progressi arriverà presto",
@@ -120,13 +140,32 @@
     "subtitle": "Ogni modo per connettersi, tutto in un posto.",
     "privateChat": "Chat privata",
     "privateChatDesc": "Conversazioni individuali con i tuoi partner linguistici.",
-    "translation": "Traduzione",
-    "translationDesc": "Traduzione in tempo reale tra italiano e giapponese.",
+    "translation": "Frasario",
+    "translationDesc": "Cerca nel nostro frasario curato italiano ↔ giapponese.",
     "voiceMessages": "Messaggi vocali",
-    "voiceMessagesDesc": "Esercita la pronuncia con messaggi registrati.",
+    "voiceMessagesDesc": "Apri una chat per registrare e inviare messaggi vocali.",
     "languageExchange": "Scambio linguistico",
-    "languageExchangeDesc": "Sessioni strutturate per scambiare lingue, in modo equo.",
-    "comingSoon": "Prossimamente"
+    "languageExchangeDesc": "Apri una chat per proporre una sessione di scambio programmata.",
+    "comingSoon": "Prossimamente",
+    "phrasebookTitle": "Frasario",
+    "phrasebookPlaceholder": "Cerca in italiano, giapponese o inglese…",
+    "phrasebookNoResults": "Nessuna corrispondenza trovata nel frasario.",
+    "recording": "Registrazione…",
+    "voiceMessagePlaceholder": "🎤 Messaggio vocale",
+    "exchangeTitle": "Sessioni di scambio linguistico",
+    "exchangePropose": "Proponi una sessione",
+    "exchangeDate": "Data e ora",
+    "exchangeNote": "Nota (opzionale)",
+    "exchangeNotePlaceholder": "es. 30 minuti, metà italiano metà giapponese",
+    "exchangeSubmit": "Invia proposta",
+    "exchangeAccept": "Accetta",
+    "exchangeDecline": "Rifiuta",
+    "exchangeStatusProposed": "Proposta",
+    "exchangeStatusAccepted": "Accettata",
+    "exchangeStatusDeclined": "Rifiutata",
+    "exchangeEmpty": "Nessuna sessione di scambio ancora.",
+    "exchangeProposedByYou": "Hai proposto",
+    "exchangeProposedByThem": "Ha proposto"
   },
   "profile": {
     "editProfile": "Modifica profilo",
@@ -142,7 +181,8 @@
       "friends": "Amici"
     },
     "progressTitle": "Progressi di apprendimento",
-    "progressComingSoon": "I grafici dettagliati dei progressi arriveranno presto."
+    "progressComingSoon": "I grafici dettagliati dei progressi arriveranno presto.",
+    "avatarTooLarge": "La foto deve essere sotto i 5MB"
   },
   "settings": {
     "title": "Impostazioni",

@@ -22,7 +22,7 @@ function dayOfYear(date: Date): number {
 }
 
 export function FeaturedCards() {
-  const { t } = useTranslation();
+  const { t, tRaw } = useTranslation();
   const router = useRouter();
 
   // Deterministic default (matches SSR); real value is set client-side
@@ -48,7 +48,7 @@ export function FeaturedCards() {
   }, []);
 
   const wordOfDay = VOCABULARY[dayIndex % VOCABULARY.length];
-  const culturalTips = t("home.featured.culturalTips") as unknown as string[];
+  const culturalTips = tRaw("home.featured.culturalTips");
   const tipsArray = Array.isArray(culturalTips) ? culturalTips : [];
   const tipOfDay = tipsArray[dayIndex % (tipsArray.length || 1)] ?? "";
 

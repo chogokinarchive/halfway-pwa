@@ -1,7 +1,7 @@
 "use client";
 
 import { MapPin } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { EditProfileDialog } from "@/components/profile/EditProfileDialog";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -19,6 +19,7 @@ export function ProfileHeader({
   return (
     <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-card p-6 text-center sm:flex-row sm:text-left">
       <Avatar className="h-20 w-20 text-xl">
+        {profile.avatar_url && <AvatarImage src={profile.avatar_url} alt="" />}
         <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
       </Avatar>
 

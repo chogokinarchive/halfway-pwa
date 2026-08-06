@@ -89,7 +89,27 @@
     "allCategories": "All",
     "grammar": {
       "comingSoonTitle": "Grammar lessons are on the way",
-      "comingSoonDesc": "Structured grammar paths for Italian and Japanese are in development."
+      "comingSoonDesc": "Structured grammar paths for Italian and Japanese are in development.",
+      "italianTitle": "Italian basics",
+      "japaneseTitle": "Japanese basics",
+      "lessons": {
+        "it1Title": "Gendered nouns",
+        "it1Desc": "Italian nouns are either masculine or feminine. Masculine nouns often end in -o (il libro), feminine ones in -a (la casa). Articles and adjectives must match: il libro rosso, la casa rossa.",
+        "it2Title": "Present tense verbs",
+        "it2Desc": "Regular verbs fall into three groups by ending: -are (parlare), -ere (vedere), -ire (dormire). Each has its own set of endings for io, tu, lui/lei, noi, voi, loro.",
+        "it3Title": "Essere vs Avere",
+        "it3Desc": "\"Essere\" (to be) and \"avere\" (to have) are the two most important verbs, used both alone and to build compound tenses like the passato composto.",
+        "it4Title": "Plural nouns",
+        "it4Desc": "Most nouns change their final vowel to form the plural: -o and -e become -i (libro → libri, chiave → chiavi), -a becomes -e (casa → case).",
+        "ja1Title": "Sentence order: SOV",
+        "ja1Desc": "Japanese sentences follow Subject-Object-Verb order, unlike Italian's Subject-Verb-Object. \"Watashi wa sushi wo tabemasu\" literally means \"I sushi eat.\"",
+        "ja2Title": "Particles は, が, を",
+        "ja2Desc": "Particles mark the role of each word. は (wa) marks the topic, が (ga) marks the subject, を (wo) marks the object of a verb.",
+        "ja3Title": "Polite vs plain form",
+        "ja3Desc": "Verbs have a polite form (desu/masu, used with strangers or in formal settings) and a plain form (used with close friends and family).",
+        "ja4Title": "No plurals, no gender",
+        "ja4Desc": "Japanese nouns don't change for singular/plural or gender — \"neko\" means both \"cat\" and \"cats\", context tells you which."
+      }
     },
     "progress": {
       "comingSoonTitle": "Progress tracking is coming soon",
@@ -120,13 +140,32 @@
     "subtitle": "Every way to connect, all in one place.",
     "privateChat": "Private Chat",
     "privateChatDesc": "One-to-one conversations with your language partners.",
-    "translation": "Translation",
-    "translationDesc": "Real-time translation between Italian and Japanese.",
+    "translation": "Phrasebook",
+    "translationDesc": "Search our curated Italian ↔ Japanese phrasebook.",
     "voiceMessages": "Voice Messages",
-    "voiceMessagesDesc": "Practice pronunciation with recorded messages.",
+    "voiceMessagesDesc": "Open any chat to record and send voice messages.",
     "languageExchange": "Language Exchange",
-    "languageExchangeDesc": "Structured sessions to trade languages, fairly.",
-    "comingSoon": "Coming soon"
+    "languageExchangeDesc": "Open any chat to propose a scheduled exchange session.",
+    "comingSoon": "Coming soon",
+    "phrasebookTitle": "Phrasebook",
+    "phrasebookPlaceholder": "Search in Italian, Japanese, or English…",
+    "phrasebookNoResults": "No matches found in our phrasebook yet.",
+    "recording": "Recording…",
+    "voiceMessagePlaceholder": "🎤 Voice message",
+    "exchangeTitle": "Language exchange sessions",
+    "exchangePropose": "Propose a session",
+    "exchangeDate": "Date & time",
+    "exchangeNote": "Note (optional)",
+    "exchangeNotePlaceholder": "e.g. 30 minutes, half Italian half Japanese",
+    "exchangeSubmit": "Send proposal",
+    "exchangeAccept": "Accept",
+    "exchangeDecline": "Decline",
+    "exchangeStatusProposed": "Proposed",
+    "exchangeStatusAccepted": "Accepted",
+    "exchangeStatusDeclined": "Declined",
+    "exchangeEmpty": "No exchange sessions yet.",
+    "exchangeProposedByYou": "You proposed",
+    "exchangeProposedByThem": "They proposed"
   },
   "profile": {
     "editProfile": "Edit profile",
@@ -142,7 +181,8 @@
       "friends": "Friends"
     },
     "progressTitle": "Learning progress",
-    "progressComingSoon": "Detailed progress charts are coming soon."
+    "progressComingSoon": "Detailed progress charts are coming soon.",
+    "avatarTooLarge": "Photo must be under 5MB"
   },
   "settings": {
     "title": "Settings",

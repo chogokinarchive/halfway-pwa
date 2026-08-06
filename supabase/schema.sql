@@ -15,6 +15,7 @@ create table if not exists profiles (
   name text not null default 'New user',
   country text not null default '',
   bio text not null default '',
+  avatar_url text,
   native_language text not null default 'Italian',
   learning_language text not null default 'Japanese',
   push_notifications boolean not null default true,
@@ -299,6 +300,8 @@ create table if not exists messages (
   conversation_id uuid not null references conversations (id) on delete cascade,
   sender_id uuid not null references profiles (id) on delete cascade,
   content text not null,
+  media_url text,
+  media_type text check (media_type in ('audio')),
   created_at timestamptz not null default now()
 );
 
@@ -333,7 +336,114 @@ create policy "Users can send messages in their conversations"
 alter publication supabase_realtime add table messages;
 
 -- ------------------------------------------------------------
--- STORAGE: bucket per le immagini dei post
+-- EXCHANGE SESSIONS (proposte di scambio linguistico programmato)
+-- ------------------------------------------------------------
+create table if not exists exchange_sessions (
+  id uuid primary key default gen_random_uuid(),
+  conversation_id uuid not null references conversations (id) on delete cascade,
+  proposed_by uuid not null references profiles (id) on delete cascade,
+  scheduled_at timestamptz not null,
+  note text,
+  status text not null default 'proposed' check (status in ('proposed', 'accepted', 'declined')),
+  created_at timestamptz not null default now()
+);
+
+alter table exchange_sessions enable row level security;
+
+create policy "Users can view sessions in their conversations"
+  on exchange_sessions for select
+  to authenticated
+  using (
+    exists (
+      select 1 from conversations c
+      where c.id = conversation_id
+        and (c.user_a = auth.uid() or c.user_b = auth.uid())
+    )
+  );
+
+create policy "Users can propose sessions in their conversations"
+  on exchange_sessions for insert
+  to authenticated
+  with check (
+    auth.uid() = proposed_by
+    and exists (
+      select 1 from conversations c
+      where c.id = conversation_id
+        and (c.user_a = auth.uid() or c.user_b = auth.uid())
+    )
+  );
+
+create policy "Users can update sessions in their conversations"
+  on exchange_sessions for update
+  to authenticated
+  using (
+    exists (
+      select 1 from conversations c
+      where c.id = conversation_id
+        and (c.user_a = auth.uid() or c.user_b = auth.uid())
+    )
+  );
+
+alter publication supabase_realtime add table exchange_sessions;
+
+-- ------------------------------------------------------------
+-- STORAGE: bucket per i messaggi vocali
+-- ------------------------------------------------------------
+insert into storage.buckets (id, name, public)
+values ('chat-media', 'chat-media', true)
+on conflict (id) do nothing;
+
+create policy "Public read access for chat media"
+  on storage.objects for select
+  to public
+  using (bucket_id = 'chat-media');
+
+create policy "Authenticated users can upload chat media"
+  on storage.objects for insert
+  to authenticated
+  with check (
+    bucket_id = 'chat-media'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+-- ------------------------------------------------------------
+-- STORAGE: bucket per gli avatar dei profili
+-- ------------------------------------------------------------
+insert into storage.buckets (id, name, public)
+values ('avatars', 'avatars', true)
+on conflict (id) do nothing;
+
+create policy "Public read access for avatars"
+  on storage.objects for select
+  to public
+  using (bucket_id = 'avatars');
+
+create policy "Authenticated users can upload their own avatar"
+  on storage.objects for insert
+  to authenticated
+  with check (
+    bucket_id = 'avatars'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+create policy "Users can update their own avatar"
+  on storage.objects for update
+  to authenticated
+  using (
+    bucket_id = 'avatars'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+create policy "Users can delete their own avatar"
+  on storage.objects for delete
+  to authenticated
+  using (
+    bucket_id = 'avatars'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+-- ------------------------------------------------------------
+-- STORAGE: bucket per le immagini/video dei post
 -- ------------------------------------------------------------
 insert into storage.buckets (id, name, public)
 values ('post-images', 'post-images', true)
@@ -375,6 +485,7 @@ select
   p.created_at,
   pr.name as author_name,
   pr.country as author_country,
+  pr.avatar_url as author_avatar_url,
   coalesce(l.like_count, 0) as like_count,
   coalesce(c.comment_count, 0) as comment_count,
   exists (

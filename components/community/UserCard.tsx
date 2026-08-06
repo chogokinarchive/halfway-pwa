@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Check, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -61,6 +61,7 @@ export function UserCard({
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-3">
           <Avatar className="h-11 w-11">
+            {profile.avatar_url && <AvatarImage src={profile.avatar_url} alt="" />}
             <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div className="min-w-0 flex-1">

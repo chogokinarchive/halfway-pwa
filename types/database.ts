@@ -3,6 +3,7 @@ export interface ProfileRow {
   name: string;
   country: string;
   bio: string;
+  avatar_url: string | null;
   native_language: string;
   learning_language: string;
   push_notifications: boolean;
@@ -73,5 +74,17 @@ export interface MessageRow {
   conversation_id: string;
   sender_id: string;
   content: string;
+  media_url: string | null;
+  media_type: "audio" | null;
+  created_at: string;
+}
+
+export interface ExchangeSessionRow {
+  id: string;
+  conversation_id: string;
+  proposed_by: string;
+  scheduled_at: string;
+  note: string | null;
+  status: "proposed" | "accepted" | "declined";
   created_at: string;
 }

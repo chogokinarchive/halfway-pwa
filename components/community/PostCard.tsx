@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Heart, MessageCircle, Loader2, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,7 @@ export interface FeedPost {
   author_id: string;
   author_name: string;
   author_country: string;
+  author_avatar_url: string | null;
   content: string;
   media_url: string | null;
   media_type: "image" | "video" | null;
@@ -102,6 +103,7 @@ export function PostCard({
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center gap-3">
           <Avatar>
+            {post.author_avatar_url && <AvatarImage src={post.author_avatar_url} alt="" />}
             <AvatarFallback>{post.author_name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div className="min-w-0 flex-1">
